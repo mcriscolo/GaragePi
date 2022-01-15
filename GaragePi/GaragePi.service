@@ -1,0 +1,12 @@
+[Unit]
+Description=GaragePi
+After=multi-user.target
+
+[Service]
+Environment=DOTNET_HOME=/usr/share/dotnet
+Environment=DOTNET_CLI_HOME=/home/mike/GaragePi
+Environment=ASPNETCORE_URLS="http://0.0.0.0:5000"
+ExecStart=/bin/bash -c 'cd /home/mike/GaragePi; export ASPNETCORE_URLS="http://0.0.0.0:5000"; sudo ./GaragePi --urls "http://0.0.0.0:5000" > /tmp/GaragePi.log 2>&1'
+
+[Install]
+WantedBy=multi-user.target
